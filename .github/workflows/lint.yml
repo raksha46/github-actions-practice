@@ -1,0 +1,20 @@
+name: Auto Linter
+
+on:
+  push:
+    paths: "*.py"
+
+jobs:
+  code_linting:
+    runs-on: ubuntu-latest
+    steps:
+    # This step will automatically clone the code of the current branch to the runner
+      - name: Checkout/CLone the code
+        uses: actions/checkout@v7
+    # This step will install the linter tool
+      - name: Install linter
+        run: pip install ruff
+    # This step will run the linter
+      - name: Check the files for linting
+        run: ruff check .
+  
